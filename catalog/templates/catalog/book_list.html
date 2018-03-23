@@ -1,0 +1,29 @@
+{% extends "base_template.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <br>
+    <p class="display-1 text-center">Explore by book</p>
+    <hr>
+
+    {% if book_list %}
+    <ul>
+
+        {% for book in book_list %}
+        <div class="media">
+            <p class="text-center"><img class="mr-3" src="{% static "book_icon.png" %}" alt="Generic book image"></p>
+            <div class="media-body">
+                  <h1 class="mt-0"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h1><h5> by {{ book.author }}</h5>
+                  {{ book.summary }}
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+    <p>There are no books yet.</p>
+    {% endif %}
+
+{% endblock %}
