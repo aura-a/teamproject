@@ -1,7 +1,43 @@
 {% extends "base_template.html" %}
+{% load staticfiles %}
 
 {% block content %}
-<h1>Add a Location</h1>
+<br>
+<hr>
+<p class="display-1 text-center"><strong>Ready to Contribute?</strong></p>
+<br>
+<div class="row align-items-center"> <!-- three box row -->
+    <div class="col-xs-4">
+        <div class="text-center">
+            <img class="img-rounded index-img" src="{% static "glasgow.jpg" %}" alt="Glasgow">
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="text-center">
+            <img class="img-rounded index-img" src="{% static "edinburgh.jpg" %}" alt="Edinburgh">
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="text-center">
+            <img class="img-rounded index-img" src="{% static "cornwall.jpg" %}" alt="Cornwall">
+        </div>
+    </div>
+</div>
+<hr>
+<br>
+
+<p class="text-center strong"> Need examples? Click <a href="{% url 'locations' %}">here</a> to explore locations added by other users.</p>
+<br><br>
+
+
+<br>
+<p class="display-1">Add a location</p>
+<br>
+<p class="display-5">Use the description field to include and cite important books located in this travel destination. </p>
+<p class="display-5">Please include a brief overview of this location that is both accurate and descriptive. </p>
+<p class="display-5">Please avoid spoilers.</p>
+<br><br>
+
 <form action="" method="post">
     {% csrf_token %}
     <table>

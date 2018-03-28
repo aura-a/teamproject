@@ -5,6 +5,8 @@ from django.views.generic.edit import CreateView
 
 from catalog.forms import (SignUpForm,EditProfileForm)
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
@@ -22,7 +24,6 @@ def index(request):
         context={}
     )
 
-
 # Book related -----------------------------------------------
 class BookListView(generic.ListView):
 
@@ -35,7 +36,7 @@ class BookDetailView(generic.DetailView):
     model = Book
 
 
-class BookCreate(CreateView):
+class BookCreate(LoginRequiredMixin, CreateView):
     model = Book
     template_name_suffix = '_add'
     fields = '__all__'
@@ -51,7 +52,7 @@ class LocationDetailView(generic.DetailView):
     model = Location
 
 
-class LocationCreate(CreateView):
+class LocationCreate(LoginRequiredMixin, CreateView):
     model = Location
     template_name_suffix = '_add'
     fields = '__all__'
@@ -72,30 +73,10 @@ def signup(request):
 
         args = {'form':form}
 
-        return render(request, 'users/signup.html', args)
+        return render(request, 'accounts/signup.html', args)
 
 
-def profile(request):
-    args = {'user': request.user}
-
-    return render(request, 'users/profile.html', args)
-
-
-def edit_profile(request):
-    if request.method == 'POST':
-        form = EditProfileForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-
-            return redirect('my-profile')
-    # Accounts for 'GET'
-    else:
-        form = EditProfileForm(instance=request.user)
-        args = {'form': form}
-        return render(request, 'users/edit_profile.html', args)
-
-
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
@@ -111,15 +92,16 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
 
         args = {'form': form}
-        return render(request, 'users/change_password.html', args)
+        return render(request, 'accounts/change_password.html', args)
 
 
 # Contribution page to choose what to contribute
+@login_required
 def contribute(request):
 
     return render(
         request,
-        'users/contribute.html',
+        'accounts/contribute.html',
         context={}
     )
 

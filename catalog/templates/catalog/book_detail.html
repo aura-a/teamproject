@@ -7,17 +7,14 @@
     <p><strong>by </strong> <a href="">{{ book.author }}</a></p>
     <hr>
 
-    <!--<div>-->
-        <!--<p class="text-center"> <img src="{% static "looking_for_alaska.jpg" %}" style="height:300px"></p>-->
-    <!--</div>-->
-
     <p><strong>Summary:</strong>{{ book.summary }}</p>
     <hr>
     <p>
         <strong>Quotes: </strong><br>
         {{ book.quotes }}
-
     </p>
+    <hr>
+    <p><strong>Location in the book:</strong>{{ book.location_mentioned }}</p>
+    <hr>
     <p><strong>ISBN:</strong>{{ book.isbn }}</p>
-
 {% endblock %}

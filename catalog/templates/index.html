@@ -18,11 +18,7 @@
     <div class="col-xs-6">
         <p>Hello. We are Travel With A Book. We host a new kind of atlas; powered by adventurers like you, dedicated to bringing maps alive and transforming classic literature into the travel guide of the future. </p>
         <br>
-        {% if user.is_authenticated %}
-        <p>Start your journey here!</p>
-        {% else %}
         <p>Ready to start your journey? Click here to <a href="{% url 'signup' %}">sign up</a>!</p>
-        {% endif %}
     </div>
     <div class="col-xs-3"></div>
 </div>
@@ -31,17 +27,17 @@
 
 <div class="row align-items-center"> <!-- two box row -->
     <div class="col-xs-6">
-        <p class="h4 text-center">Most viewed book</p>
+        <p class="h4 text-center">Book of the Month</p>
         <div class="text-center">
             <img class="img-rounded index-img" src="{% static "looking_for_alaska.jpg" %}" alt="Most viewed book">
             <p>Looking for Alaska <br> <small>by John Green</small></p>
         </div>
     </div>
     <div class="col-xs-6">
-        <p class="h4 text-center">Most viewed location</p>
+        <p class="h4 text-center">Location of the Month</p>
         <div class="text-center">
-                <img class="img-rounded index-img" src="{% static "image_placeholder.jpg" %}" alt="Most viewed location">
-                <p>Glasgow <br> <small>United Kingdom</small></p>
+                <img class="img-rounded index-img" src="{% static "Sitka_Alaska.jpg" %}" alt="Most viewed location">
+                <p>Sitka, Alaska <br> <small>USA</small></p>
         </div>
     </div>
 </div>

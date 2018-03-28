@@ -8,10 +8,11 @@ class Book(models.Model):
     # Fields
     title = models.CharField(max_length=200)
     # author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    author = models.CharField(max_length=200, null=False, default='No author', blank=False)
+    author = models.CharField(max_length=200, null=False, default='Unknown', blank=False)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book.')
     quotes = models.TextField(max_length=2000, help_text='Enter some quotes from the book.', default="", blank=True)
-    isbn = models.CharField(max_length=13,
+    location_mentioned = models.CharField(max_length=1000, help_text='Where does the action take place.', blank=False, null=True)
+    isbn = models.CharField(max_length=13, blank=False,
                             help_text='13 character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number.</a>')
     # locations = models.ManyToManyField(Location)
 

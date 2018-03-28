@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
 from .models import Book, Location
 
 
@@ -9,14 +8,15 @@ class BookForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ['title', 'author', 'summary', 'quotes', 'isbn']
+        fields = ('title', 'author', 'summary', 'quotes', 'isbn',)
+
 
 
 class LocationForm(forms.ModelForm):
 
     class Meta:
         model = Location
-        fields = ['name', 'country', 'description']
+        fields = ('name', 'country', 'description',)
 
 
 class ImageUploadForm(forms.Form):
